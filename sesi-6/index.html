@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sesi-6</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="restart()" id="home">HOME</a>
+            <a onclick="darkMode()" id="mode">MODE</a>
+        </nav>
+        <h1>SESI 6 CUY UNIVERSITY</h1>  
+        <p class="info" id="info"></p> 
+    </div>
+
+    <!-- initializing function -->
+    <script>
+        let body = document.body;
+        let info = document.getElementById("info")
+        let mode = document.getElementById("mode")
+        let home = document.getElementById("home")
+
+        const darkLimit = 5;
+        let darkCounter = 0;
+        let darkRemainingLeft;
+
+        function restart(){
+            location.reload();
+        }
+
+        function darkMode(){
+            if (darkRemainingLeft == 1){
+                alert('dah mentok cuy, refresh browsernyaa manis')
+                info.textContent = "🤯FITUR DARK MODE ANDA SUDAH ABIS SAYANGG🤯"
+                mode.style.display = "none"
+                home.textContent = "RESTART"
+                return
+            }
+
+            darkCounter += 1;
+            darkRemainingLeft = darkLimit-darkCounter;
+
+            // render ke info element
+            info.textContent = `Dark Mode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}x`
+            body.classList.toggle("dark");
+        }
+
+    </script>
+</body>
+</html>
+<!-- PR
+1. tulisan mode ditambahkan jadi mode-dark dan mode-light 
+2. tambahkan menu mode lain(mode-berani, mode-apa aja)-->
